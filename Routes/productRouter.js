@@ -1,14 +1,19 @@
-import { Router } from "express";
-import { ProductController } from "../Controllers/productController.js";
+import { Router } from 'express';
+import { ProductController } from '../Controllers/productController.js';
 
-export const router = Router();
+export const productRouter = Router();
 
-router.get('/', ProductController.get);
+// Consultar todos los productos - consultar por categoría
+productRouter.get('/all', ProductController.get);
 
-router.get('/:id', ProductController.getById);
+// Consultar producto por id
+productRouter.get('/:id', ProductController.getById);
 
-router.post('/', ProductController.create);
+// Crear un producto
+productRouter.post('/create', ProductController.create);
 
-router.patch('/:id', ProductController.update);
+// Actualizar un producto
+productRouter.patch('/:id', ProductController.update);
 
-router.delete('/', ProductController.delete);
+// Borrar un producto
+productRouter.delete('/:id', ProductController.delete);

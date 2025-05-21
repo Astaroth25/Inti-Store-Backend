@@ -1,23 +1,27 @@
 import express from 'express';
 import cors from 'cors';
-import { router } from './Routes/productRouter.js';
+import cookieParser from 'cookie-parser';
+
+import { corsMiddleware } from './Middlewares/cors.js';
+import { authenticateToken } from './Middlewares/verifyToken.js';
+import { productRouter } from './Routes/productRouter.js';
+import { userRouter } from './Routes/userRouter.js';
 
 const app = express();
 
-app.use(cors({
-    origin: (origin, callback) => {
-        const ALLOWED_ROUTES = ['http://localhost:8080', 'http://localhost:3000/product', 'http://localhost:3306'];
-        if (!origin) return callback(null, true);
-        if (ALLOWED_ROUTES.indexOf(origin) === -1) return callback(new Error('Origin Not Allowed'));
-        return callback(null, true);
-    }
-}));
+app.use(cors(corsMiddleware));
+
+app.use(cookieParser());
+
+app.use(authenticateToken);
 
 app.use(express.json());
 
-app.use('/product', router);
+app.use('/user', userRouter);
+
+app.use('/product', productRouter);
 
 const PORT = process.env.PORT ?? 3000;
 app.listen(PORT, () => {
-    console.log(`http://localhost:${PORT}`)
+  console.log(`http://localhost:${PORT}`);
 });
