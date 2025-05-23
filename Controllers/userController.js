@@ -9,7 +9,7 @@ const JWT_SECRET = process.env.JWT_SECRET ?? 'sjhgsdvhj';
 export class userController {
   static async get (req, res) {
     const { user } = req.sesion;
-    if (user.role !== 'Seller') return res.send('Not Authorized');
+    if (user?.role !== 'Seller') return res.send('Not Authorized');
     const { id } = req.params;
     const result = await userModel.get({ id });
     return res.json(result);
@@ -28,7 +28,7 @@ export class userController {
 
   static async update (req, res) {
     const { user } = req.sesion;
-    if (user.role !== 'Seller') return res.send('Not Authorized');
+    if (user?.role !== 'Buyer') return res.send('Not Authorized');
     const result = ValidatePartialUser(req.body);
     if (!result.success) return { message: 'Data Not Valid' };
     const { id } = req.params;
@@ -38,7 +38,7 @@ export class userController {
 
   static async delete (req, res) {
     const { user } = req.sesion;
-    if (user.role !== 'Seller') return res.send('Not Authorized');
+    if (user?.role !== 'Seller') return res.send('Not Authorized');
     const { id } = req.params;
     const result = await userModel.delete({ id });
     return res.json(result);

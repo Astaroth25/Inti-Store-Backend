@@ -14,7 +14,7 @@ Content-Type: application/json
     "price": 70.99, 
     "description": "Zapatos de lona con suela de goma.", 
     "category": "Moda", 
-    "link": "http://link.jpg", 
+    "link": "https://i.pinimg.com/originals/ba/cb/de/bacbde10cd4ffec65d41b31260c2dd45.jpg", 
     "rate": 4.5, 
     "stock": 10
 }

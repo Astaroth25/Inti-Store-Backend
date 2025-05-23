@@ -2,7 +2,7 @@
 GET http://localhost:3000/user/6a92d24b-5a73-4f94-9563-c667d76040c2
 
 ### Probar la creación de usuarios.
-POST http://localhost:3000/user
+POST http://localhost:3000/user/register
 Content-Type: application/json
 
 {
@@ -15,12 +15,13 @@ Content-Type: application/json
 }
 
 ### Probar la actualizacion de usuarios.
-PATCH http://localhost:3000/user/c92acb75-315f-48d2-bf3a-1ef2dad67cfa
+PATCH http://localhost:3000/user/46745b8a-45f9-44ce-8f3f-f021d930deed
 Content-Type: application/json
 
 {
     "username": "Astaroth",
-    "fname": "Angelo Octavio"
+    "fname": "Angelo Octavio",
+    "role": "Seller"
 }
 
 ### Probar el borrado de usuarios.

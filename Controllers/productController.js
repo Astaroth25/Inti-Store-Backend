@@ -16,7 +16,7 @@ export class ProductController {
 
   static async create (req, res) {
     const { user } = req.sesion;
-    if (user.role !== 'Seller') return res.send('Not Authorized');
+    if (user?.role !== 'Seller') return res.send('Not Authorized');
     const result = ValidateProduct(req.body);
     if (!result.success) return res.status(400).json({ error: 'Algo salió mal.', message: result.error.message });
     const product = await ProductModel.create({ input: result.data });
@@ -25,7 +25,7 @@ export class ProductController {
 
   static async update (req, res) {
     const { user } = req.sesion;
-    if (user.role !== 'Seller') return res.send('Not Authorized');
+    if (user?.role !== 'Seller') return res.send('Not Authorized');
     const { id } = req.params;
     const result = ValidatePartialProduct(req.body);
     if (!result.success) return res.status(400).json({ error: 'Algo salió mal.' });
@@ -35,7 +35,7 @@ export class ProductController {
 
   static async delete (req, res) {
     const { user } = req.sesion;
-    if (user.role !== 'Seller') return res.send('Not Authorized');
+    if (user?.role !== 'Seller') return res.send('Not Authorized');
     const { id } = req.params;
     const product = await ProductModel.delete({ id });
     return res.json(product);
