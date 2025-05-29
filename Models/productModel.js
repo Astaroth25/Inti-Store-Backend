@@ -26,6 +26,14 @@ export class ProductModel {
     });
   }
 
+  static async getCategories () {
+    return withConnection(async (connection) => {
+      const [result] = await connection.execute(`
+        SELECT name FROM categories;`);
+      return result;
+    });
+  }
+
   static async create ({ input }) {
     return withTransaction(async (connection) => {
       const { name, brand, price, description, category, link, rate, stock } = input;

@@ -1,8 +1,11 @@
 ### probar el endpoint para conseguir todos los productos
-GET http://localhost:3000/product/all
+GET http://localhost:3000/product/all?category=Moda
 
 ### probar el endpoint para conseguir un producto por id
 GET http://localhost:3000/product/6eab4ded-de40-4483-b053-db590737286f
+
+### probar el endpoint para conseguir todas las categorias
+GET http://localhost:3000/product/categories
 
 ### probar el endponit para crear un producto
 POST http://localhost:3000/product/create

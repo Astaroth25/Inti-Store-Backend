@@ -14,6 +14,11 @@ export class ProductController {
     return res.json(product);
   }
 
+  static async getCategories (req, res) {
+    const categories = await ProductModel.getCategories();
+    return res.json(categories);
+  }
+
   static async create (req, res) {
     const { user } = req.sesion;
     if (user?.role !== 'Seller') return res.send('Not Authorized');

@@ -6,6 +6,9 @@ export const productRouter = Router();
 // Consultar todos los productos - consultar por categoría
 productRouter.get('/all', ProductController.get);
 
+// Consultar categorias
+productRouter.get('/categories', ProductController.getCategories);
+
 // Consultar producto por id
 productRouter.get('/:id', ProductController.getById);
 
