@@ -1,13 +1,13 @@
 import mysql2 from 'mysql2/promise';
 
 const config = {
-  host: 'localhost',
-  port: 3306,
-  user: 'astaroth_25',
-  password: 'Astaroth.09962',
-  database: 'intiStoredb',
+  host: 'f1na3.h.filess.io',
+  port: 61002,
+  user: 'IntiStoredb_directgot',
+  password: 'NewPassword12345',
+  database: 'IntiStoredb_directgot',
   waitForConnections: true,
-  connectionLimit: 10,
+  connectionLimit: 2,
   queueLimit: 0
 };
 
